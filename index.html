@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANEL MENU BY NTC IOS V2</title>
+    <style>
+        /* Toàn bộ trang */
+        body {
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Khung chính */
+        .panel {
+            width: 300px;
+            background-color: #003300;
+            border: 3px solid #00ff00;
+            box-shadow: 0px 0px 15px #00ff00;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Tiêu đề */
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #00ff00;
+        }
+
+        /* Nút công tắc bật/tắt */
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .switch {
+            position: relative;
+            width: 40px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: gray;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        /* Khi bật công tắc */
+        .switch input:checked + .slider {
+            background-color: #66ff33;
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(20px);
+        }
+
+        /* Thanh trượt */
+        .slider-container {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .slider-input {
+            width: 100%;
+            -webkit-appearance: none;
+            background: #00ff00;
+            height: 5px;
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .slider-input:hover {
+            background: #33ff33;
+        }
+
+        /* Hiển thị giá trị phần trăm */
+        .slider-value {
+            font-size: 12px;
+            color: #00ff00;
+        }
+
+        /* Nút bấm */
+        .activate-btn {
+            width: 100%;
+            background-color: #00ff00;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .activate-btn:hover {
+            background-color: #33ff33;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <div class="title">MENU AIMLOCK BY NTC V2</div>
+        <div class="subtitle">@ngtuancuongios
+- Nguyễn Tuấn Cường </div>
+        
+        <!-- Nút công tắc bật/tắt -->
+        <div class="toggle-container">
+            <span>Boost FPS Game</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="toggle-container">
+            <span>Magic ShotPro</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="toggle-container">
+            <span>Drag Config Max</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="toggle-container">
+            <span>Control Sensi vip</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="subtitle">Funcition menu NTC</div>
+
+        <!-- Thanh trượt với giá trị thay đổi -->
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>Độ nhạy màn hình 📱</span>
+                <span class="slider-value" id="macro-value">0%</span>
+            </div>
+            <input type="range" class="slider-input" id="macro-slider" min="0" max="100" value="0">
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>FIX RUNG MÁY 💯</span>
+                <span class="slider-value" id="ffh4x-value">0%</span>
+            </div>
+            <input type="range" class="slider-input" id="ffh4x-slider" min="0" max="100" value="0">
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>Khoá đầu nhẹ 🎄</span>
+                <span class="slider-value" id="accuracy-value">0%</span>
+            </div>
+            <input type="range" class="slider-input" id="accuracy-slider" min="0" max="100" value="0">
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>Tăng tốc độ Con trỏ ⚡️</span>
+                <span class="slider-value" id="stabilizer-value">0%</span>
+            </div>
+            <input type="range" class="slider-input" id="stabilizer-slider" min="0" max="100" value="0">
+        </div>
+
+        <!-- Nút bấm BẬT CHỨC NĂNG -->
+        <button class="activate-btn" onclick="showAlert()">BẬT CHỨC NĂNG</button>
+    </div>
+
+    <script>
+        // Hàm cập nhật giá trị phần trăm khi kéo thanh trượt
+        function updateSliderValue(sliderId, valueId) {
+            document.getElementById(sliderId).addEventListener("input", function () {
+                document.getElementById(valueId).textContent = this.value + "%";
+            });
+        }
+
+        updateSliderValue("macro-slider", "macro-value");
+        updateSliderValue("ffh4x-slider", "ffh4x-value");
+        updateSliderValue("accuracy-slider", "accuracy-value");
+        updateSliderValue("stabilizer-slider", "stabilizer-value");
+
+        // Hàm hiển thị thông báo khi bấm nút
+        function showAlert() {
+            alert("Bật thành công✅\n- MENU BY NgTuanCuong IOS");
+        }
+    </script>
+
+</body>
+</html>
